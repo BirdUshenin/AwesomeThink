@@ -44,25 +44,33 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.compose.rememberNavController
 import com.example.awesomethink.ui.theme.AwesomeThinkTheme
 import com.example.awesomethink.ui.theme.NameText
 import com.example.awesomethink.ui.theme.TimeTable
+import com.example.vkfee.VkFeeActivity
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             AwesomeThinkTheme {
-                CardStructure()
+                CardStructure {
+                    val intent = Intent(this, VkFeeActivity::class.java)
+                    startActivity(intent)
+                }
             }
         }
     }
 }
 
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_NORMAL)
+//@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_NORMAL)
 @Composable
-fun CardStructure() {
+fun CardStructure(
+    onClick: () -> Unit
+) {
     val navController = rememberNavController()
 
     Card(
@@ -100,7 +108,9 @@ fun CardStructure() {
             NameText()
         }
         Button(
-            onClick = { navController.navigate(MainDestinations.SECOND_SCREEN) },
+            onClick = {
+                onClick()
+            },
             modifier = Modifier
                 .padding(start = 20.dp, top = 20.dp)
         ) {
@@ -147,7 +157,7 @@ fun PreviewCardLight() {
         darkTheme = false,
         dynamicColor = false
     ) {
-        CardStructure()
+        CardStructure {}
     }
 }
 
@@ -158,7 +168,7 @@ fun PreviewCardNight() {
         darkTheme = true,
         dynamicColor = false
     ) {
-        CardStructure()
+        CardStructure {}
     }
 }
 
