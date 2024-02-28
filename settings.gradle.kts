@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "AwesomeThink"
 include(":app")
- 
+include(":vkfee")
