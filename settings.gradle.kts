@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "AwesomeThink"
 include(":app")
+include(":vkmiddle")
 include(":vkfee")
