@@ -27,9 +27,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
-import com.example.vkmiddle.theme.AwesomeThinkTheme
+import com.example.material.theme.AwesomeThinkTheme
 import com.example.awesomethink.ui.theme.NameText
 import com.example.awesomethink.ui.theme.TimeTable
+import com.example.material.MaterialActivity
 import com.example.vkmiddle.VkMiddleActivity
 
 class MainActivity : ComponentActivity() {
@@ -39,6 +40,10 @@ class MainActivity : ComponentActivity() {
             AwesomeThinkTheme {
                 CardStructure {
                     val intent = Intent(this, VkMiddleActivity::class.java)
+                    startActivity(intent)
+                }
+                ButtonToMaterial {
+                    val intent = Intent(this, MaterialActivity::class.java)
                     startActivity(intent)
                 }
             }
@@ -52,7 +57,6 @@ fun CardStructure(
     onClick: () -> Unit
 ) {
     val navController = rememberNavController()
-
     Card(
         colors = cardColors(
             containerColor = MaterialTheme.colorScheme.background
@@ -96,9 +100,27 @@ fun CardStructure(
         ) {
             Text(text = "Button")
         }
+
     }
 
 }
+
+
+@Composable
+fun ButtonToMaterial(
+    onClick: () -> Unit,
+){
+    Button(
+        onClick = {
+            onClick()
+        },
+        modifier = Modifier
+            .padding(start = 20.dp, top = 20.dp)
+    ) {
+        Text(text = "Go to Material")
+    }
+}
+
 
 //@Preview
 //@Composable
