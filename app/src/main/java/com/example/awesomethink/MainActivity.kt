@@ -5,10 +5,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -27,10 +30,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
-import com.example.material.theme.AwesomeThinkTheme
 import com.example.awesomethink.ui.theme.NameText
 import com.example.awesomethink.ui.theme.TimeTable
+import com.example.facebook.RootActivity
 import com.example.material.MaterialActivity
+import com.example.material.theme.AwesomeThinkTheme
 import com.example.vkmiddle.VkMiddleActivity
 
 class MainActivity : ComponentActivity() {
@@ -44,6 +48,10 @@ class MainActivity : ComponentActivity() {
                 }
                 ButtonToMaterial {
                     val intent = Intent(this, MaterialActivity::class.java)
+                    startActivity(intent)
+                }
+                Facebook {
+                    val intent = Intent(this, RootActivity::class.java)
                     startActivity(intent)
                 }
             }
@@ -65,7 +73,8 @@ fun CardStructure(
             .fillMaxWidth()
             .padding(
                 top = 50.dp,
-                start = 5.dp, end = 5.dp,
+                start = 5.dp,
+                end = 5.dp,
             ),
         shape = RoundedCornerShape(30.dp).copy(
             bottomStart = CornerSize(0.dp),
@@ -98,13 +107,12 @@ fun CardStructure(
             modifier = Modifier
                 .padding(start = 20.dp, top = 20.dp)
         ) {
-            Text(text = "Button")
+            Text(text = "Post")
         }
 
     }
 
 }
-
 
 @Composable
 fun ButtonToMaterial(
@@ -115,11 +123,33 @@ fun ButtonToMaterial(
             onClick()
         },
         modifier = Modifier
-            .padding(start = 20.dp, top = 20.dp)
+            .padding(start = 20.dp, top = 250.dp)
     ) {
         Text(text = "Go to Material")
     }
 }
+
+@Composable
+fun Facebook(
+    onClick: () -> Unit,
+) {
+    Button(
+        onClick = {
+            onClick()
+        },
+        modifier = Modifier
+            .padding(
+                start = 20.dp,
+                top = 300.dp
+            )
+    ) {
+        Text(text = "Facebook")
+    }
+}
+
+
+
+
 
 
 //@Preview
