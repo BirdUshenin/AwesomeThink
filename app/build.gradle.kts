@@ -73,4 +73,7 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    // for ViewModel
+    implementation("androidx.compose.runtime:runtime-livedata:1.6.3")
 }
