@@ -50,7 +50,7 @@ class VkMiddleActivity : ComponentActivity() {
                         .background(Color.Black)
                         .padding(8.dp)
                 ) {
-                    CardView()
+                    CardViewPost()
                 }
             }
         }
@@ -58,7 +58,7 @@ class VkMiddleActivity : ComponentActivity() {
 
     @Preview
     @Composable
-    fun CardView() {
+    fun CardViewPost() {
         Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.background)) {
             UpString()
             Image(

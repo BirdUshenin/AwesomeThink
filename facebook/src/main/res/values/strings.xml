@@ -2,4 +2,10 @@
     <string name="navigation_item_main">Main</string>
     <string name="navigation_item_favorite">Favorite</string>
     <string name="navigation_item_profile">Profile</string>
+    <string name="share">Share</string>
+    <string name="time">12:05</string>
+    <string name="telegram">"Павел Дуров сообщил, что с марта владельцы Telegram-каналов смогут начать получать финансовое вознаграждение за показы рекламы. "</string>
+    <string name="likes">43 829</string>
+    <string name="send_view">293</string>
+    <string name="comment_view">521</string>
 </resources>
