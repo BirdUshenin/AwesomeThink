@@ -18,7 +18,14 @@ import androidx.compose.material3.CardDefaults.cardColors
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
@@ -68,24 +75,24 @@ fun StateButton(
     val isFollowed = viewModel.isFollowing.observeAsState(false)
 
     // naked without ViewModel state for Rotate
-
 //    val isFollowed = rememberSaveable {
 //        mutableStateOf(false)
 //    }
-    FollowButton(isFollowed = isFollowed.value) {
+
+    FollowButton(isFollowed = isFollowed) {
         viewModel.changeFollowingStatus()
     }
 }
 
 @Composable
 fun FollowButton(
-    isFollowed: Boolean,
+    isFollowed: State<Boolean>,
     clickListener: () -> Unit
 ) {
     Button(
         onClick = { clickListener() },
         colors = ButtonDefaults.buttonColors(
-            if (isFollowed) {
+            if (isFollowed.value) {
                 MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
             } else {
                 MaterialTheme.colorScheme.primary
@@ -93,7 +100,7 @@ fun FollowButton(
         ),
         modifier = Modifier.padding(start = 40.dp)
     ) {
-        val text = if (isFollowed) {
+        val text = if (isFollowed.value) {
             "unfollow"
         } else {
             "follow"
